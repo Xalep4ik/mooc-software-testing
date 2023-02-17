@@ -21,17 +21,30 @@ public class RomanNumeral {
     public int convert(String s) {
 
         int convertedNumber = 0;
-        for(int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             int currentNumber = map.get(s.charAt(i));
-            int next = i+1 < s.length() ? map.get(s.charAt(i+1)) : 0;
+            int next = i + 1 < s.length() ? map.get(s.charAt(i + 1)) : 0;
 
-            if(currentNumber >= next)
+            if (currentNumber >= next)
                 convertedNumber += currentNumber;
             else
                 convertedNumber -= currentNumber;
         }
-
         return convertedNumber;
+    }
 
+    public int convert1(String romanNumeral) {
+
+        int some = 0;
+        for (int i = 0; i < romanNumeral.length(); i++) {
+            int it = map.get(romanNumeral.charAt(i));
+            int next = i + 1 < romanNumeral.length() ? map.get(romanNumeral.charAt(i + 1)) : 0;
+
+            if (it >= next)
+                some += it;
+            else
+                some -= it;
+        }
+        return some;
     }
 }
